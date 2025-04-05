@@ -1,0 +1,306 @@
+/* Estilos Generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f7f6; /* Un gris muy claro */
+    color: #333;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #0077cc; /* Azul principal */
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+header p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Layout Wrapper */
+.content-wrapper {
+    display: flex;
+    flex-direction: column; /* Apila panel de actividades y tabla por defecto */
+    gap: 20px; /* Espacio entre panel y tabla */
+    max-width: 2000px;
+    margin: 0 auto 30px auto; /* Centrar y margen inferior */
+}
+
+/* Panel de Actividades Predefinidas (Contenedor General) */
+.activity-panel {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    width: 100%; /* Ocupa el ancho disponible */
+}
+
+.activity-panel h2 {
+    color: #0056b3;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+/* Contenedor de las Columnas */
+.activity-columns-container {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que se envuelvan en pantallas pequeñas */
+    gap: 20px; /* Espacio entre columnas */
+    justify-content: space-between; /* Distribuye espacio si hay sitio */
+}
+
+/* Estilo de cada Columna de Actividad */
+.activity-column {
+    flex: 1; /* Hace que las columnas intenten ocupar el mismo espacio */
+    min-width: 200px; /* Ancho mínimo antes de envolverse */
+    background-color: #ffffff; /* Fondo blanco para cada columna */
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.activity-column h3 {
+    color: #333;
+    margin-bottom: 15px; /* Más espacio bajo el título */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    text-align: center; /* Centrar título de columna */
+}
+
+/* Lista dentro de cada columna */
+.activity-list {
+    display: flex;
+    flex-direction: column; /* Mantener items en columna dentro de su contenedor */
+    gap: 10px; /* Espacio entre actividades */
+}
+
+/* Estilo del Item Arrastrable */
+.activity-item {
+    background-color: #e9f5ff;
+    border: 1px solid #cce0ff;
+    padding: 10px 12px; /* Ligeramente más padding */
+    border-radius: 4px;
+    cursor: grab;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    user-select: none; /* Evita seleccionar el texto al arrastrar */
+    text-align: center; /* Centrar texto del item */
+}
+
+.activity-item:hover {
+    background-color: #d4ebff;
+}
+
+.activity-item:active {
+    cursor: grabbing;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    opacity: 0.8; /* Un poco transparente al arrastrar */
+}
+
+/* Tabla Principal */
+main {
+    flex: 1; /* Ocupa el espacio necesario */
+    min-width: 0; /* Necesario para flexbox con overflow */
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ocupa el ancho disponible */
+}
+
+/* Contenedor de la tabla para scroll */
+.table-container {
+    overflow-x: auto; /* Permite scroll horizontal */
+    max-height: 70vh; /* Altura máxima antes de mostrar scroll vertical */
+    overflow-y: auto;
+}
+
+/* Estilos de la Tabla */
+#schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: fixed; /* Ayuda a que las columnas tengan un ancho más uniforme */
+}
+
+#schedule-table th,
+#schedule-table td {
+    border: 1px solid #ddd; /* Bordes sutiles */
+    padding: 10px 8px; /* Espaciado interno */
+    text-align: center;
+    min-height: 40px; /* Altura mínima para celdas vacías */
+    font-size: 0.9em;
+    word-wrap: break-word; /* Para que el texto largo no rompa el layout */
+}
+
+/* Cabecera de la tabla */
+#schedule-table thead th {
+    background-color: #0077cc; /* Azul principal */
+    color: #fff;
+    font-weight: 600;
+    position: sticky; /* Cabecera fija al hacer scroll vertical */
+    top: 0;
+    z-index: 10; /* Encima de la columna de hora */
+}
+
+/* Columna de Horarios */
+#schedule-table tbody th {
+    background-color: #e9f5ff; /* Un azul muy claro */
+    font-weight: 400;
+    font-size: 0.85em;
+    color: #333;
+    text-align: right;
+    padding-right: 10px;
+    white-space: nowrap; /* Evita que la hora se parta */
+    position: sticky; /* Columna de hora fija al hacer scroll horizontal */
+    left: 0;
+    z-index: 5; /* Por debajo de la cabecera */
+}
+
+/* Celdas de datos (días) */
+#schedule-table tbody td {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    vertical-align: top; /* Alinea el texto arriba */
+    text-align: left; /* Alinea texto de actividad a la izquierda */
+    padding-left: 10px;
+    min-width: 100px; /* Ancho mínimo para celdas de día */
+}
+
+#schedule-table tbody td:hover {
+    background-color: #f0f9ff; /* Un azul aún más claro al pasar el ratón */
+}
+
+#schedule-table tbody td:empty::before {
+    content: ""; /* Sin placeholder visible */
+    display: block;
+    text-align: center;
+}
+
+/* Estilo para celdas de tabla cuando se arrastra algo sobre ellas */
+#schedule-table tbody td.drag-over {
+    background-color: #a3d3ff !important; /* Azul más intenso para indicar zona de drop */
+    border: 2px dashed #0056b3; /* Borde punteado más visible */
+}
+
+/* Botón Limpiar */
+#clear-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #dc3545; /* Rojo */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+#clear-button:hover {
+    background-color: #c82333; /* Rojo más oscuro */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Responsive adjustments */
+
+/* Pantallas Grandes (ej. Desktop): Panel actividades a la izquierda, tabla a la derecha */
+@media (min-width: 1200px) {
+    .content-wrapper {
+        flex-direction: row; /* Lado a lado */
+        align-items: flex-start; /* Alinea arriba */
+        gap: 30px;
+    }
+    .activity-panel {
+        flex: 0 0 700px; /* Ancho fijo (ajusta si necesitas más/menos) */
+        width: 700px;
+    }
+    main {
+        flex: 1; /* La tabla ocupa el resto */
+        width: auto; /* Ancho automático basado en flex */
+    }
+    /* Mantenemos las 3 columnas de actividades si caben */
+    .activity-columns-container {
+         flex-wrap: nowrap; /* Evitar que se envuelvan */
+     }
+     .activity-column {
+         min-width: 0; /* Permitir que se encojan un poco si es necesario */
+     }
+}
+
+/* Pantallas Medianas (ej. Tablets): Panel arriba, tabla abajo. Columnas de actividades intentan 2 por fila */
+@media (max-width: 1199px) and (min-width: 769px) {
+    /* El layout por defecto (.content-wrapper flex-direction: column) ya funciona */
+    .activity-columns-container {
+        justify-content: center; /* Centrar si no caben 3 */
+    }
+     .activity-column {
+         flex-basis: calc(33% - 15px); /* Intentar 3 columnas si caben */
+         min-width: 180px;
+     }
+     .table-container { max-height: none; } /* Quitar altura máxima si se prefiere scroll de página */
+     #schedule-table tbody th { position: static; } /* Quitar sticky puede ser mejor */
+}
+
+
+/* Pantallas Pequeñas (ej. Móviles grandes, Tablets pequeñas): Panel arriba, tabla abajo. Columnas de actividades 1 o 2 por fila */
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    header h1 { font-size: 1.8em; }
+    header p { font-size: 1em; }
+    .content-wrapper { gap: 20px; } /* Menos espacio */
+    .activity-panel { padding: 15px; }
+    .activity-columns-container {
+        justify-content: center;
+    }
+    .activity-column {
+        flex-basis: calc(50% - 10px); /* Intentar 2 columnas */
+        min-width: 160px;
+    }
+    main { padding: 15px; }
+    .table-container { max-height: none; }
+    #schedule-table th,
+    #schedule-table td { font-size: 0.8em; padding: 6px 4px; min-width: 80px; }
+    #schedule-table tbody th { font-size: 0.75em; padding-right: 5px; min-width: 60px; position: static; }
+}
+
+/* Móviles muy pequeños: Todo apilado, 1 columna de actividad */
+@media (max-width: 480px) {
+     header h1 { font-size: 1.5em; }
+     header p { font-size: 0.9em; }
+     .activity-column {
+         flex-basis: 100%; /* Una columna */
+         min-width: unset; /* No necesita ancho mínimo */
+         padding: 10px;
+     }
+     .activity-column h3 { font-size: 1em; margin-bottom: 10px; }
+     .activity-item { font-size: 0.85em; padding: 8px 10px; }
+     #schedule-table th,
+     #schedule-table td { font-size: 0.7em; min-width: 70px; }
+     #schedule-table tbody th { min-width: 50px; font-size: 0.7em; }
+}

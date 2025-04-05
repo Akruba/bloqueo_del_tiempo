@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planificador Semanal - Bloqueo de Tiempo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>TECES: Planificador Semanal Interactivo</h1>
+        <p>Aplica la técnica de <strong>Bloqueo de Tiempo</strong>. Arrastra actividades o haz clic en una celda para añadir/editar.</p>
+    </header>
+
+    <div class="content-wrapper"> <!-- Contenedor principal para layout -->
+
+        <section class="activity-panel">
+            <h2>Actividades Predefinidas</h2>
+            <!-- Contenedor que tendrá display: flex -->
+            <div class="activity-columns-container">
+                <!-- Columna 1 - AHORA DENTRO DEL CONTENEDOR -->
+                <div class="activity-column">
+                    <h3>Ejercicio 1</h3>
+                    <div class="activity-list" id="exercise1-list">
+                        <div class="activity-item" draggable="true">Despertar / Prepararse</div>
+                        <div class="activity-item" draggable="true">Horario Escolar</div>
+                        <div class="activity-item" draggable="true">Almuerzo</div>
+                        <div class="activity-item" draggable="true">Descanso</div>
+                        <div class="activity-item" draggable="true">Entregar Proyecto Ciencias</div>
+                        <div class="activity-item" draggable="true">Examen Matemáticas</div>
+                        <div class="activity-item" draggable="true">Examen Lenguaje</div>
+                        <div class="activity-item" draggable="true">Estudiar Lenguaje</div>
+                        <div class="activity-item" draggable="true">Estudiar Matemáticas</div>
+                    </div>
+                </div>
+
+                <!-- Columna 2 - AHORA DENTRO DEL CONTENEDOR -->
+                <div class="activity-column">
+                    <h3>Ejercicio 1</h3>
+                    <div class="activity-list" id="exercise2-list">
+                        <div class="activity-item" draggable="true">Entrenamiento Fútbol</div>
+                        <div class="activity-item" draggable="true">Clase Piano</div>
+                        <div class="activity-item" draggable="true">Preparar Proyecto Ciencias</div>
+                        <div class="activity-item" draggable="true">Otras Tareas</div>
+                        <div class="activity-item" draggable="true">Repasar Apuntes</div>
+                        <div class="activity-item" draggable="true">Cumpleaños Amigo</div>
+                        <div class="activity-item" draggable="true">Entretenimiento / Juegos</div>
+                        <div class="activity-item" draggable="true">Planificación Semanal</div>
+                        <div class="activity-item" draggable="true">Dormir por 8 Horas</div>
+                    </div>
+                </div>
+
+                <!-- Columna 3 - AHORA DENTRO DEL CONTENEDOR -->
+                <div class="activity-column">
+                    <h3>Ejercicio 2 y 3</h3>
+                    <div class="activity-list" id="exercise3-list">
+                        <div class="activity-item" draggable="true">Tarea Extra de Historia</div>
+                        <div class="activity-item" draggable="true">Descanso por Enfermedad</div>
+                        <div class="activity-item" draggable="true">Ayudar Hermano con Feria</div>
+                        <div class="activity-item" draggable="true">Emergencia: Hacer Reparar la Computadora</div>
+                        <div class="activity-item" draggable="true">Partido Amistoso Fútbol</div>
+                    </div>
+                </div>
+            <!-- La etiqueta de cierre del contenedor va AQUÍ, después de las 3 columnas -->
+            </div>
+        </section>
+
+        <!-- La tabla principal -->
+        <main>
+            <div class="table-container">
+                <table id="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Horario</th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miércoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sábado</th>
+                            <th>Domingo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Las filas se generarán con JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <button id="clear-button">Limpiar Planificador</button>
+        </main>
+
+    </div> <!-- Fin de content-wrapper -->
+
+    <footer>
+        <p>Creado para enseñar la técnica de Bloqueo de Tiempo</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
